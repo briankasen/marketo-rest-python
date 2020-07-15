@@ -269,14 +269,19 @@ class MarketoClient:
                     'get_activities_export_jobs_list': self.get_activities_export_jobs_list,
                     'create_leads_export_job': self.create_leads_export_job,
                     'create_activities_export_job': self.create_activities_export_job,
+                    'create_program_members_export_job': self.create_program_members_export_job,
                     'enqueue_leads_export_job': self.enqueue_leads_export_job,
                     'enqueue_activities_export_job': self.enqueue_activities_export_job,
+                    'enqueue_program_members_export_job' : self.enqueue_program_members_export_job,
                     'cancel_leads_export_job': self.cancel_leads_export_job,
                     'cancel_activities_export_job': self.cancel_activities_export_job,
+                    'cancel_program_members_export_job': self.cancel_program_members_export_job,
                     'get_leads_export_job_status': self.get_leads_export_job_status,
                     'get_activities_export_job_status': self.get_activities_export_job_status,
+                    'get_program_members_export_job_status': self.get_program_members_export_job_status,
                     'get_leads_export_job_file': self.get_leads_export_job_file,
                     'get_activities_export_job_file': self.get_activities_export_job_file,
+                    'get_program_members_export_job_file': self.get_program_members_export_job_file,
                     'get_named_accounts': self.get_named_accounts,
                     'sync_named_accounts': self.sync_named_accounts,
                     'delete_named_accounts': self.delete_named_accounts,
@@ -287,6 +292,7 @@ class MarketoClient:
                     'get_named_account_lists': self.get_named_account_lists,
                     'sync_named_account_lists': self.sync_named_account_lists,
                     'delete_named_account_lists': self.delete_named_account_lists
+                    'create_program_members'
                 }
                 result = method_map[method](*args, **kargs)
             except MarketoException as e:
@@ -5100,6 +5106,8 @@ class MarketoClient:
     def _create_bulk_export_job(self, entity, fields=None, filters=None, format='CSV', columnHeaderNames=None):
         assert entity is not None, 'Invalid argument: required fields is none.'
         if entity == 'leads':
+            assert fields is not None, 'Invalid argument: required fields is none.'
+        if entity == 'program/members':
             assert fields is not None, 'Invalid argument: required fields is none.'
         assert filters is not None, 'Invalid argument: required filters is none.'
         data = {'fields': fields, 'format': format, 'filter': filters}
