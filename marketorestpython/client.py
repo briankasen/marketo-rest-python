@@ -5141,11 +5141,17 @@ class MarketoClient:
     def get_activities_export_job_file(self, *args, **kargs):
         return self._export_job_state_machine('activities', 'file', *args, **kargs)
 
+    def get_program_members_export_job_file(self, *args, **kargs):
+        return self._export_job_state_machine('program/members', 'file', *args, **kargs)
+
     def get_leads_export_job_status(self, *args, **kargs):
         return self._export_job_state_machine('leads', 'status', *args, **kargs)
 
     def get_activities_export_job_status(self, *args, **kargs):
         return self._export_job_state_machine('activities', 'status', *args, **kargs)
+
+    def get_program_members_export_job_status(self, *args, **kargs):
+        return self._export_job_state_machine('program/members', 'status', *args, **kargs)
 
     def cancel_leads_export_job(self, *args, **kargs):
         return self._export_job_state_machine('leads', 'cancel', *args, **kargs)
@@ -5153,11 +5159,17 @@ class MarketoClient:
     def cancel_activities_export_job(self, *args, **kargs):
         return self._export_job_state_machine('activities', 'cancel', *args, **kargs)
 
+    def cancel_program_members_export_job(self, *args, **kargs):
+        return self._export_job_state_machine('program/members', 'cancel', *args, **kargs)
+
     def enqueue_leads_export_job(self, *args, **kargs):
         return self._export_job_state_machine('leads', 'enqueue', *args, **kargs)
 
     def enqueue_activities_export_job(self, *args, **kargs):
         return self._export_job_state_machine('activities', 'enqueue', *args, **kargs)
+
+    def enqueue_program_members_export_job(self, *args, **kargs):
+        return self._export_job_state_machine('program/members', 'enqueue', *args, **kargs)
 
     def create_leads_export_job(self, *args, **kargs):
         return self._create_bulk_export_job('leads', *args, **kargs)
@@ -5165,12 +5177,17 @@ class MarketoClient:
     def create_activities_export_job(self, *args, **kargs):
         return self._create_bulk_export_job('activities', *args, **kargs)
 
+    def create_program_members_export_job(self, *args, **kargs):
+        return self._create_bulk_export_job('program/members', *args, **kargs)
+
     def get_leads_export_jobs_list(self):
         return self._get_export_jobs_list('leads')
 
     def get_activities_export_jobs_list(self):
         return self._get_export_jobs_list('activities')
 
+    def get_program_members_export_jobs_list(self):
+        return self._get_export_jobs_list('program/members')
     # --- NAMED ACCOUNTS ---
 
     def get_named_accounts(self, filterType, filterValues, fields=None, batchSize=None, return_full_result=False,
