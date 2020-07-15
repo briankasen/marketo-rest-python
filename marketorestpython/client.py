@@ -292,7 +292,6 @@ class MarketoClient:
                     'get_named_account_lists': self.get_named_account_lists,
                     'sync_named_account_lists': self.sync_named_account_lists,
                     'delete_named_account_lists': self.delete_named_account_lists
-                    'create_program_members'
                 }
                 result = method_map[method](*args, **kargs)
             except MarketoException as e:
